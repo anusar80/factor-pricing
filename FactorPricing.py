@@ -139,26 +139,31 @@ for num in range(np.size(Date,0)):
             Lambda[num,k] = results.params[k] # store factor prices
         toc()
 #%% Plot factor prices
+plt.figure()
+plt.plot(Date[win:],Lambda[win:,1],'-k')
+plt.title('Price of Systematic Risk')
+plt.savefig("Price.png", dpi=150,quality=95)
+        
 fig, ax = plt.subplots(2, 2)
 fig.tight_layout(pad=1)
 ax[0,0].set_title('SLOPE')
-ax[0,0].set_ylim([-0.75,1.25])
-ax[0,0].plot(Date[252:],Lambda[252:,1],'-k')
-ax[0,0].plot(Date[252:],np.zeros(np.size(Date[252:],0)),':k')
+ax[0,0].set_ylim([-0.75,2.5])
+ax[0,0].plot(Date[win:],Lambda[win:,1],'-k')
+ax[0,0].plot(Date[win:],np.zeros(np.size(Date[win:],0)),':k')
 
 ax[0,1].set_title('MKT')
-ax[0,1].set_ylim([-0.75,1.25])
-ax[0,1].plot(Date[252:],Lambda[252:,2],'-k')
-ax[0,1].plot(Date[252:],np.zeros(np.size(Date[252:],0)),':k')
+ax[0,1].set_ylim([-0.75,2.5])
+ax[0,1].plot(Date[win:],Lambda[win:,2],'-k')
+ax[0,1].plot(Date[win:],np.zeros(np.size(Date[win:],0)),':k')
 
 ax[1,0].set_title('SMB')
-ax[1,0].set_ylim([-0.75,1.25])
-ax[1,0].plot(Date[252:],Lambda[252:,3],'-k')
-ax[1,0].plot(Date[252:],np.zeros(np.size(Date[252:],0)),':k')
+ax[1,0].set_ylim([-0.75,2.5])
+ax[1,0].plot(Date[win:],Lambda[win:,3],'-k')
+ax[1,0].plot(Date[win:],np.zeros(np.size(Date[win:],0)),':k')
 
 ax[1,1].set_title('HML')
-ax[1,1].set_ylim([-0.75,1.25])
-ax[1,1].plot(Date[252:],Lambda[252:,4],'-k')
-ax[1,1].plot(Date[252:],np.zeros(np.size(Date[252:],0)),':k')
+ax[1,1].set_ylim([-0.75,2.5])
+ax[1,1].plot(Date[win:],Lambda[win:,4],'-k')
+ax[1,1].plot(Date[win:],np.zeros(np.size(Date[win:],0)),':k')
 
 plt.savefig("FactorPrices.png", dpi=150,quality=95)
